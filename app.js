@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const connectDB = require("./db/db.connect");
 const fileUpload = require("express-fileupload");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -44,7 +44,7 @@ app.use(mongoSanitize());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("tiny"));
 }
-
+console.log(process.env.NODE_ENV);
 //Routes
 app.get("/", (req, res) => {
   res.send("E-commerce website");
